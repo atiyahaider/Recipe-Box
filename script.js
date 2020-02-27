@@ -122,7 +122,7 @@ class RecipeCard extends React.Component {
       React.createElement(Modal, { handleClose: this.handleClose },
       React.createElement("div", { id: "recipeCard" },
       React.createElement("div", { id: "recipeCardHeader" },
-      React.createElement("span", { class: "close", onClick: this.handleClose }, "\xD7"),
+      React.createElement("span", { className: "close", onClick: this.handleClose }, "\xD7"),
       this.props.operation === EDIT ? React.createElement("h2", null, "Edit Recipe") : React.createElement("h2", null, "Add a New Recipe")),
 
       React.createElement("form", { onSubmit: this.handleSubmit },
@@ -133,17 +133,17 @@ class RecipeCard extends React.Component {
       React.createElement("div", { id: "ingredientList" },
       React.createElement("input", { type: "text", id: 'ingredient' + j, value: ingredient, onChange: this.handleChange, placeholder: "Ingredient...", onInput: this.validateForm, required: true }),
       this.state.ingredients.length > 1 &&
-      React.createElement("div", { class: "ingOperation button", onClick: () => this.removeIngredient(j) }, "-"))),
+      React.createElement("div", { className: "ingOperation button", onClick: () => this.removeIngredient(j) }, "-"))),
 
 
 
-      React.createElement("div", { class: "ingOperation button", id: "addIngredient", onClick: this.addIngredient }, "+"),
+      React.createElement("div", { className: "ingOperation button", id: "addIngredient", onClick: this.addIngredient }, "+"),
       React.createElement("h3", null, "Directions:"),
       React.createElement("textarea", { id: "directions", value: this.state.directions, onChange: this.handleChange, placeholder: "Directions...", rows: "5" }),
 
       React.createElement("div", { style: { textAlign: 'right' } },
-      React.createElement("button", { id: "submit", class: "button", type: "submit" }, "Save"),
-      React.createElement("button", { class: "button", onClick: this.handleClose }, "Cancel"))))));
+      React.createElement("button", { id: "submit", className: "button", type: "submit" }, "Save"),
+      React.createElement("button", { className: "button", onClick: this.handleClose }, "Cancel"))))));
 
 
 
@@ -159,14 +159,14 @@ const DisplayRecipe = ({ recipe, closeModal }) => {
     React.createElement(Modal, { handleClose: closeModal },
     React.createElement("div", { id: "recipeCard" },
     React.createElement("div", { id: "recipeCardHeader" },
-    React.createElement("span", { class: "close", onClick: closeModal }, "\xD7"),
+    React.createElement("span", { className: "close", onClick: closeModal }, "\xD7"),
     React.createElement("h2", null, recipe.name)),
 
     React.createElement("div", null,
     React.createElement("h3", null, "Ingredients:"),
     React.createElement("ul", null,
     recipe.ingredients.map((ingredient, j) =>
-    React.createElement("li", { class: "ingredient", id: j }, ingredient)))),
+    React.createElement("li", { id: j }, ingredient)))),
 
 
 
@@ -198,13 +198,13 @@ class ConfirmDelete extends React.Component {
       React.createElement(Modal, { handleClose: this.handleClose },
       React.createElement("div", { id: "recipeCard" },
       React.createElement("div", { id: "recipeCardHeader" },
-      React.createElement("span", { class: "close", onClick: this.handleClose }, "\xD7"),
+      React.createElement("span", { className: "close", onClick: this.handleClose }, "\xD7"),
       React.createElement("h3", null, "Delete Recipe")),
 
       React.createElement("div", null, "Are you sure you want to delete this recipe?", React.createElement("br", null), React.createElement("br", null)),
       React.createElement("div", { style: { textAlign: 'right' } },
-      React.createElement("button", { class: "button", onClick: this.handleYes }, "Yes"),
-      React.createElement("button", { class: "button", onClick: this.handleClose }, "Cancel")))));
+      React.createElement("button", { className: "button", onClick: this.handleYes }, "Yes"),
+      React.createElement("button", { className: "button", onClick: this.handleClose }, "Cancel")))));
 
 
 
@@ -217,7 +217,7 @@ const DisplayInfo = ({ closeModal }) => {
     React.createElement(Modal, { handleClose: closeModal },
     React.createElement("div", { id: "recipeCard" },
     React.createElement("div", { id: "recipeCardHeader" },
-    React.createElement("span", { class: "close", onClick: closeModal }, "\xD7"),
+    React.createElement("span", { className: "close", onClick: closeModal }, "\xD7"),
     React.createElement("h2", null, "Information")),
 
     React.createElement("div", { id: "information" },
@@ -240,8 +240,8 @@ const DisplayInfo = ({ closeModal }) => {
 const HeaderButtons = ({ addRecipe, displayInfo }) => {
   return (
     React.createElement("div", { id: "header" },
-    React.createElement("div", { class: "headerButton", onClick: addRecipe, title: "Add New Recipe" }, React.createElement("i", { class: "fas fa-plus" })),
-    React.createElement("div", { class: "headerButton", onClick: displayInfo, title: "Information" }, React.createElement("i", { class: "fas fa-info" }))));
+    React.createElement("div", { className: "headerButton", onClick: addRecipe, title: "Add New Recipe" }, React.createElement("i", { className: "fas fa-plus" })),
+    React.createElement("div", { className: "headerButton", onClick: displayInfo, title: "Information" }, React.createElement("i", { className: "fas fa-info" }))));
 
 
 };
@@ -249,19 +249,19 @@ const HeaderButtons = ({ addRecipe, displayInfo }) => {
 const Buttons = ({ editRecipe, confirmDelete }) => {
   return (
     React.createElement("div", { id: "buttonDiv" },
-    React.createElement("button", { class: "button", onClick: editRecipe, title: "Edit Recipe" }, React.createElement("i", { class: "fas fa-pencil-alt fa-lg" })),
-    React.createElement("button", { class: "button", onClick: confirmDelete, title: "Delete Recipe" }, React.createElement("i", { class: "fas fa-trash-alt fa-lg" }))));
+    React.createElement("button", { className: "button", onClick: editRecipe, title: "Edit Recipe" }, React.createElement("i", { className: "fas fa-pencil-alt fa-lg" })),
+    React.createElement("button", { className: "button", onClick: confirmDelete, title: "Delete Recipe" }, React.createElement("i", { className: "fas fa-trash-alt fa-lg" }))));
 
 
 };
 
 const Recipe = ({ id, recipe, displayRecipe, editRecipe, confirmDelete }) => {
   return (
-    React.createElement("div", { class: "recipe", id: id },
+    React.createElement("div", { className: "recipe", id: id },
     React.createElement("div", { id: "recipeBody", onClick: displayRecipe }, React.createElement("h3", null, recipe.name),
     React.createElement("ul", null,
     recipe.ingredients.slice(0, 4).map((ingredient, j) =>
-    React.createElement("li", { class: "ingredient", id: 'ing' + j }, ingredient)),
+    React.createElement("li", { id: 'ing' + j }, ingredient)),
 
     recipe.ingredients.length > 4 && React.createElement("span", { style: { fontSize: '1.5rem' } }, "..."))),
 
@@ -365,7 +365,7 @@ class RecipeList extends React.Component {
       React.createElement(HeaderButtons, { addRecipe: this.addRecipe, displayInfo: this.displayInfo }),
 
       this.state.recipes.length === 0 ?
-      React.createElement("div", { class: "noRecipe" },
+      React.createElement("div", { className: "noRecipe" },
       React.createElement("p", null, "No recipes found. Please add new recipes.")) :
 
 
