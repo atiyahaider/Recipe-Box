@@ -14,15 +14,6 @@ class Modal extends React.Component {
       if (e.key === 'Escape' || e.keyCode === 27)
       this.props.handleClose();
     });_defineProperty(this, "onOverlayClick",
-
-
-
-
-
-
-
-
-
     () => {
       this.props.handleClose();
     });_defineProperty(this, "onDialogClick",
@@ -38,32 +29,12 @@ class Modal extends React.Component {
 
       React.createElement("div", { className: "modalBox", onClick: this.onDialogClick },
       this.props.children)));
-
-
-
   }}
 
 
 class RecipeCard extends React.Component {
   constructor(props) {
     super(props);_defineProperty(this, "handleChange",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     e => {
       if (e.target.id.startsWith('ingredient')) {
         let index = e.target.id.substr('ingredient'.length);
@@ -135,8 +106,6 @@ class RecipeCard extends React.Component {
       this.state.ingredients.length > 1 &&
       React.createElement("div", { className: "ingOperation button", onClick: () => this.removeIngredient(j) }, "-"))),
 
-
-
       React.createElement("div", { className: "ingOperation button", id: "addIngredient", onClick: this.addIngredient }, "+"),
       React.createElement("h3", null, "Directions:"),
       React.createElement("textarea", { id: "directions", value: this.state.directions, onChange: this.handleChange, placeholder: "Directions...", rows: "5" }),
@@ -144,11 +113,6 @@ class RecipeCard extends React.Component {
       React.createElement("div", { style: { textAlign: 'right' } },
       React.createElement("button", { id: "submit", className: "button", type: "submit" }, "Save"),
       React.createElement("button", { className: "button", onClick: this.handleClose }, "Cancel"))))));
-
-
-
-
-
   }}
 
 
@@ -168,23 +132,14 @@ const DisplayRecipe = ({ recipe, closeModal }) => {
     recipe.ingredients.map((ingredient, j) =>
     React.createElement("li", { id: j }, ingredient)))),
 
-
-
     React.createElement("div", null,
     React.createElement("h3", null, "Directions:"),
     React.createElement("p", { dangerouslySetInnerHTML: { __html: md.render(recipe.directions) } })))));
-
-
-
-
-
 };
 
 class ConfirmDelete extends React.Component {
   constructor(props) {
     super(props);_defineProperty(this, "handleYes",
-
-
     () => {
       this.props.processRecipe();
     });_defineProperty(this, "handleClose",
@@ -205,10 +160,6 @@ class ConfirmDelete extends React.Component {
       React.createElement("div", { style: { textAlign: 'right' } },
       React.createElement("button", { className: "button", onClick: this.handleYes }, "Yes"),
       React.createElement("button", { className: "button", onClick: this.handleClose }, "Cancel")))));
-
-
-
-
   }}
 
 
@@ -230,11 +181,6 @@ const DisplayInfo = ({ closeModal }) => {
     React.createElement("li", null, "To delete a recipe, click on the delete (trash) button at the bottom of the recipe card."),
     React.createElement("li", null, "All new recipes added, are saved in the browser's local storage. If the page is refreshed, these recipes will still be there. But if the browser's temp files are deleted, all the recipes will be lost."),
     React.createElement("li", null, "Mark-up is supported for entering the directions for the recipe."))))));
-
-
-
-
-
 };
 
 const HeaderButtons = ({ addRecipe, displayInfo }) => {
@@ -242,8 +188,6 @@ const HeaderButtons = ({ addRecipe, displayInfo }) => {
     React.createElement("div", { id: "header" },
     React.createElement("div", { className: "headerButton", onClick: addRecipe, title: "Add New Recipe" }, React.createElement("i", { className: "fas fa-plus" })),
     React.createElement("div", { className: "headerButton", onClick: displayInfo, title: "Information" }, React.createElement("i", { className: "fas fa-info" }))));
-
-
 };
 
 const Buttons = ({ editRecipe, confirmDelete }) => {
@@ -251,8 +195,6 @@ const Buttons = ({ editRecipe, confirmDelete }) => {
     React.createElement("div", { id: "buttonDiv" },
     React.createElement("button", { className: "button", onClick: editRecipe, title: "Edit Recipe" }, React.createElement("i", { className: "fas fa-pencil-alt fa-lg" })),
     React.createElement("button", { className: "button", onClick: confirmDelete, title: "Delete Recipe" }, React.createElement("i", { className: "fas fa-trash-alt fa-lg" }))));
-
-
 };
 
 const Recipe = ({ id, recipe, displayRecipe, editRecipe, confirmDelete }) => {
@@ -265,35 +207,14 @@ const Recipe = ({ id, recipe, displayRecipe, editRecipe, confirmDelete }) => {
 
     recipe.ingredients.length > 4 && React.createElement("span", { style: { fontSize: '1.5rem' } }, "..."))),
 
-
     React.createElement(Buttons, {
       editRecipe: editRecipe,
       confirmDelete: confirmDelete })));
-
-
-
 };
 
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);_defineProperty(this, "displayRecipe",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     index => {
       this.setState({ operation: DISPLAY,
         selectedIndex: index });
@@ -368,8 +289,6 @@ class RecipeList extends React.Component {
       React.createElement("div", { className: "noRecipe" },
       React.createElement("p", null, "No recipes found. Please add new recipes.")) :
 
-
-
       React.createElement("div", { id: "recipeList" },
       this.state.recipes.map((recipe, i) =>
       React.createElement(Recipe, {
@@ -378,12 +297,6 @@ class RecipeList extends React.Component {
         displayRecipe: () => this.displayRecipe(i),
         editRecipe: () => this.editRecipe(i),
         confirmDelete: () => this.confirmDelete(i) }))),
-
-
-
-
-
-
       (this.state.operation === ADD || this.state.operation === EDIT) &&
       React.createElement(RecipeCard, {
         operation: this.state.operation,
@@ -391,37 +304,25 @@ class RecipeList extends React.Component {
         closeModal: this.closeModal,
         processRecipe: this.processRecipe }),
 
-
-
       this.state.operation === DISPLAY &&
       React.createElement(DisplayRecipe, {
         recipe: this.state.recipes[this.state.selectedIndex],
         closeModal: this.closeModal }),
-
-
 
       this.state.operation === DELETE &&
       React.createElement(ConfirmDelete, {
         closeModal: this.closeModal,
         processRecipe: this.processRecipe }),
 
-
-
       this.state.operation === INFO &&
       React.createElement(DisplayInfo, { closeModal: this.closeModal })));
-
-
-
   }}
-
 
 const Footer = () => {
   return (
     React.createElement("div", { id: "footer" },
     React.createElement("p", null, "Designed and coded by"),
     React.createElement("a", { target: "_blank", href: "https://s.codepen.io/atiyahaider/debug/oaZxeb/dGrXWdOKgPWM" }, "Atiya Haider")));
-
-
 };
 
 const RecipeBox = () => {
@@ -430,8 +331,6 @@ const RecipeBox = () => {
     React.createElement("h1", null, "Recipe Box"),
     React.createElement(RecipeList, null),
     React.createElement(Footer, null)));
-
-
 };
 
 ReactDOM.render(React.createElement(RecipeBox, null), document.getElementById('recipeBoxApp'));
